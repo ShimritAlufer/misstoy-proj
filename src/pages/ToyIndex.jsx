@@ -22,15 +22,7 @@ export function ToyIndex(){
             <h1>Welcome to our Toys App!</h1>
             <ToyFilter onSetFilterBy={onSetFilterBy} filterBy={{name, label, inStock}}/> 
             
-            {/* // <RobotFilter onSetFilterBy={onSetFilterBy} filterBy={{ model, minBatteryStatus }} />
-            // <RobotFilterType filterBy={{ type }} onSetFilterBy={onSetFilterBy} />
-            // <section style={{ marginBlock: '10px', display: 'flex', gap: '10px' }}>
-            //     <button onClick={onSpendBalance}>Spend Balance</button>
-            //     <button onClick={onTogglePopo}>{popo ? 'Popo!' : 'Not Popo...'}</button>
-            // </section>
-            // <Link to='/robot/edit'>Add Robot</Link>
-            // <RobotList robots={robots} onRemoveRobot={onRemoveRobot} />
-            // <Outlet /> */}
+            
         </section>
     )
 
