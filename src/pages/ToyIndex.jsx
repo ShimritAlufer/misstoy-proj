@@ -19,7 +19,7 @@ export function ToyIndex(){
     const { name, label, inStock } = filterBy
     return (
         <section>
-            <h1>Welcome to our Toys App!</h1>
+            <h1>Welcome to our Toys World!</h1>
             <ToyFilter onSetFilterBy={onSetFilterBy} filterBy={{name, label, inStock}}/> 
             
             

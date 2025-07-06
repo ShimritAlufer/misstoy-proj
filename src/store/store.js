@@ -1,8 +1,10 @@
 import { toyReducer } from './toy.reducer.module'
-import { configureStore } from '@reduxjs/toolkit'
+import { combineReducers, compose, legacy_createStore as createStore } from 'redux'
 
-export const store = configureStore({
-  reducer: {
-    toyModule: toyReducer,
-  },
+const rootReducer = combineReducers({
+    toyModule: toyReducer
 })
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
+export const store = createStore(rootReducer, composeEnhancers())
