@@ -10,10 +10,10 @@ const initialState = {
   }
 }
 
-export function toyReducer(state = initialState, action) {
-  switch (action.type) {
+export function toyReducer(state = initialState, cmd) {
+  switch (cmd.type) {
     case 'SET_FILTER':
-      return { ...state, filterBy: action.filterBy }
+      return { ...state, filterBy: cmd.filterBy }
     default:
       return state
   }
