@@ -11,8 +11,74 @@ const STORAGE_KEY = 'toys'
 
 _createToys()
 
-const labels = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle',
-'Outdoor', 'Battery Powered']
+// const labels = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle',
+// 'Outdoor', 'Battery Powered']
+
+function createToy(name = '', price = 0, labels=[], createdAt = Date.now(), inStock = true) {
+  return {
+    id: _makeId(),
+    name,
+    price,
+    labels,
+    createdAt,
+    inStock,
+  }
+}
+
+
+async function query(filterBy = {}) {
+  try {
+    let toys = await storageService.query(STORAGE_KEY)
+
+    let {
+      name = '',
+      labels = [],
+      inStock = '',
+      sortBy,
+      sortDir = 'asc'
+    } = filterBy
+
+    if (name) {
+      toys = toys.filter(toy =>
+        toy.name.toLowerCase().includes(name.toLowerCase())
+      )
+    }
+
+    if (labels.length) {
+      toys = toys.filter(toy => 
+        labels.every(lbl => 
+          toy.labels.some(toyLbl => toyLbl.toLowerCase() === lbl.toLowerCase())
+        )
+      )
+    }
+
+    if (inStock !== '') {
+      toys = toys.filter(toy =>
+        String(toy.inStock) === inStock
+      )
+    }
+
+    if (sortBy) {
+      const dir = sortDir === 'asc' ? 1 : -1
+      toys.sort((a, b) => {
+        if (sortBy === 'name') return a.name.localeCompare(b.name) * dir
+        if (sortBy === 'price') return (a.price - b.price) * dir
+        if (sortBy === 'createdAt') return (a.createdAt - b.createdAt) * dir
+        return 0
+      })
+    }
+
+    return toys
+  } catch (error) {
+    console.log('error:', error)
+    throw error
+  }
+}
+
+
+function getById(id) {
+    return storageService.get(STORAGE_KEY, id)
+}
 
 function _createToys() {
     let toys = utilService.loadFromStorage(STORAGE_KEY)
@@ -27,38 +93,4 @@ function _createToys() {
         ]
         utilService.saveToStorage(STORAGE_KEY, toys)
     }
-}
-
-async function query(filterBy = {}) {
-    try {
-        let toys = await storageService.query(STORAGE_KEY)
-        if (filterBy) {
-            let { name = '', label = '', inStock = false } = filterBy
-            toys = toys.filter(toy =>
-                toy.label.toLowerCase().includes(label.toLowerCase()) &&
-                toy.name.toLowerCase().includes(name.toLowerCase()) &&
-                toy.inStock === inStock
-            )
-
-            const { sortBy, sortDir = 'asc' } = filterBy
-            const dir = sortDir === 'asc' ? 1 : -1
-
-            if (sortBy) {
-                robots.sort((a, b) => {
-                    if (sortBy === 'name') return a.name.localeCompare(b.name) * dir
-                    if (sortBy === 'price') return (a.price - b.price) * dir
-                    if (sortBy === 'createdAt') return (a.createdAt - b.createdAt) * dir
-                })
-            }
-
-        }
-        return toys
-    } catch (error) {
-        console.log('error:', error)
-        throw error
-    }
-}
-
-function getById(id) {
-    return storageService.get(STORAGE_KEY, id)
 }

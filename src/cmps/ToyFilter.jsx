@@ -13,12 +13,13 @@ export function ToyFilter({ onFilterChange, initialFilter }) {
   }, [filterBy])
 
   function handleChange({ target }) {
-    const { name, value, type, checked } = target
+    const { name, value, options } = target
+    let newValue
     if (name === 'labels') {
-      let newLabels = [...filterBy.labels]
-      if (checked) newLabels.push(value)
-      else newLabels = newLabels.filter(lbl => lbl !== value)
-      setFilterBy(prev => ({ ...prev, labels: newLabels }))
+      newValue = Array.from(options)
+      .filter(option => option.selected)
+      .map(option => option.value)
+      setFilterBy(prev => ({ ...prev, labels: newValue }))
     } else if (name === 'inStock') {
       setFilterBy(prev => ({ ...prev, inStock: value }))
     } else {
@@ -34,21 +35,19 @@ export function ToyFilter({ onFilterChange, initialFilter }) {
         <option value="true">In Stock</option>
         <option value="false">Out of Stock</option>
       </select>
-      <fieldset>
-        <legend>Labels</legend>
+      <select
+        name="labels"
+        multiple
+        value={filterBy.labels}
+        onChange={handleChange}
+      >
         {LABELS.map(label => (
-          <label key={label}>
-            <input
-              type="checkbox"
-              name="labels"
-              value={label}
-              checked={filterBy.labels.includes(label)}
-              onChange={handleChange}
-            />
+          <option key={label} value={label}>
             {label}
-          </label>
+          </option>
         ))}
-      </fieldset>
+      </select>
+
       <select name="sortBy" value={filterBy.sortBy} onChange={handleChange}>
         <option value="">Sort By</option>
         <option value="name">Name</option>
