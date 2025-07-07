@@ -33,8 +33,7 @@ export function ToyFilter({ onFilterChange, initialFilter }) {
 
   return (
     <section className="toy-filter">
-      {/* <input type="text" name="name" placeholder="Search by name" value={name} onChange={handleChange} /> */}
-      <input value={name} name="name" id="model" onChange={handleChange} />
+      <input value={name} name="name" onChange={handleChange} />
       <select name="inStock" value={inStock} onChange={handleChange}>
         <option value="">All</option>
         <option value="true">In Stock</option>
