@@ -12,8 +12,8 @@ export function App() {
         <h1>Miss Toy</h1>
         <Routes>
           <Route path="/" element={< ToyIndex/>} />
-          <Route path="/edit/:toyId?" element={<ToyEdit />} />
-          <Route path="/details/:toyId" element={<ToyDetails />} />
+          <Route path="/toy/edit/:toyId?" element={<ToyEdit />} />
+          <Route path="/toy/:toyId" element={<ToyDetails />} />
         </Routes>
       </main>
     </Router>

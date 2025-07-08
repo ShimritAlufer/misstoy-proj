@@ -8,7 +8,6 @@ export async function loadToys() {
   try {
     const filterBy = store.getState().toyModule.filterBy
     const toys = await toyService.query(filterBy)
-    console.log('toys:', toys)
     store.dispatch({ type: SET_TOYS, toys })  
   } catch (err) {
     console.error('Error loading toys:', err)

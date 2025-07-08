@@ -77,6 +77,7 @@ async function query(filterBy = {}) {
 
 
 function getById(id) {
+    console.log("storageId: ", id)
     return storageService.get(STORAGE_KEY, id)
 }
 
@@ -92,5 +93,6 @@ function _createToys() {
           
         ]
         utilService.saveToStorage(STORAGE_KEY, toys)
+        
     }
 }

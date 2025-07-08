@@ -2,7 +2,6 @@ import { ToyPreview} from './ToyPreview.jsx'
 
 
 export function ToyList({ toys }) {
-  console.log('ToyList received toys:', toys)
   return (
     
     <ul>
