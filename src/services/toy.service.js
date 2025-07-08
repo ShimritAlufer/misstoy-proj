@@ -4,7 +4,8 @@ import { utilService } from './util.service.js'
 export const toyService = {
     createToy,
     query,
-    getById
+    getById,
+    save
 }
 
 const STORAGE_KEY = 'toys'
@@ -77,8 +78,16 @@ async function query(filterBy = {}) {
 
 
 function getById(id) {
-    console.log("storageId: ", id)
     return storageService.get(STORAGE_KEY, id)
+}
+
+function save(toyToSave) {
+    if (toyToSave.id) {
+        return storageService.put(STORAGE_KEY, toyToSave)
+    } else {
+        toyToSave.isOn = false
+        return storageService.post(STORAGE_KEY, toyToSave)
+    }
 }
 
 function _createToys() {

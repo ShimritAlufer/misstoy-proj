@@ -28,6 +28,7 @@ export function ToyIndex() {
       
       <ToyFilter onFilterChange={onFilterChange} initialFilter={{name, label, inStock}} />
       <ToyList toys={toys} filterBy={{ name, label, inStock }} />
+       
     </section>
   )
 }

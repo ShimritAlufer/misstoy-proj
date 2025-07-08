@@ -7,6 +7,7 @@ import { ToyDetails } from './pages/ToyDetails.jsx'
 import { Home } from './pages/Home.jsx'
 import { AppHeader } from './cmps/AppHeader.jsx'
 import { UserMsg} from './cmps/UserMsg.jsx'
+import { DynamicModal } from './cmps/DynamicModal';
 
 export function App() {
   return (
@@ -16,12 +17,14 @@ export function App() {
         <h1>Miss Toy</h1>
         <Routes>
           <Route path="/" element={< Home/>} />
-          <Route path="/toy" element={< ToyIndex/>} />
-          <Route path="/toy/edit/:toyId?" element={<ToyEdit />} />
+          <Route path="/toy" element={< ToyIndex/>}>
+            <Route path="/toy/edit/:toyId?" element={<ToyEdit />} />
+          </Route>
           <Route path="/toy/:toyId" element={<ToyDetails />} />
         </Routes>
       </main>
       <UserMsg />
+      <DynamicModal/>
     </Router>
   )
 }
