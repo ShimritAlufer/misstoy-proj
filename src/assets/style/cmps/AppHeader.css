@@ -1,0 +1,38 @@
+.app-header {
+  background-color: var(--clr1bg);
+  color: var(--clr1-dark);
+  padding-block: 1em;
+  display:flex;
+  justify-content: space-between;
+}
+
+.app-header .logo {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--clr1-dark);
+
+}
+
+.app-header nav {
+  margin-block-end: 1em;
+}
+
+
+button {
+    cursor: pointer;
+    background-color: var(--clr2bg);
+    margin: 0.5em;
+    border: 0;
+    padding: 0.5em 0.8em;
+    border-radius: 4px;
+}
+
+button:hover, button.selected {
+    background-color: var(--clr2bg-light);
+    color: var(--gray3);
+    transition: 0.3s;
+}
+
+.app-header nav a:not(:first-of-type) {
+  margin-inline-start: 0.5em;
+}

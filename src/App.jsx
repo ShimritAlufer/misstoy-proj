@@ -8,6 +8,7 @@ import { Home } from './pages/Home.jsx'
 import { AppHeader } from './cmps/AppHeader.jsx'
 import { UserMsg} from './cmps/UserMsg.jsx'
 import { DynamicModal } from './cmps/DynamicModal';
+import './assets/style/main.css'
 
 export function App() {
   return (

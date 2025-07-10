@@ -36,14 +36,15 @@ export function AppHeader() {
     }
 
     return (
-        <header>
+        <header className='app-header'>
             <section className="container">
-                <h1>Toys</h1>
-                <button onClick={() => navigate(-1)}>Back</button>
+                {/* <button onClick={() => navigate(-1)}>Back</button> */}
                 <nav>
                     <NavLink to='/' >Home</NavLink>
                     <NavLink to='/toy' >Toys</NavLink>
                 </nav>
+
+                <span className='logo'>Miss Toy - World of Fun!</span>
             </section>
             <section className="container">
                 {user &&

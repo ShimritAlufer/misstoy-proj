@@ -47,9 +47,7 @@ export function LoginSignup(props) {
     }
     return (
         <div className="login-page">
-            <p>
-                <button className="btn-link" onClick={toggleSignup}>Go To {!isSignup ? 'Signup' : 'Login'}</button>
-            </p>
+           
             {!isSignup &&
                 <form className="login-form" onSubmit={onLogin}>
                     <select
@@ -63,6 +61,10 @@ export function LoginSignup(props) {
                     <button>Login!</button>
                 </form>
             }
+
+             <p>
+                <button className="btn-link" onClick={toggleSignup}>Go To {!isSignup ? 'Signup' : 'Login'}</button>
+            </p>
             <div className="signup-section">
                 {isSignup &&
                     <form className="signup-form" onSubmit={onSignup}>

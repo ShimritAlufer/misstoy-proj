@@ -75,7 +75,7 @@ async function spendBalance(amount) {
 }
 
 function saveLocalUser(user) {
-    user = { id: user.id, fullname: user.fullname, imgUrl: user.imgUrl, balance: user.balance }
+    user = { id: user.id, fullname: user.fullname, balance: user.balance }
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
 }

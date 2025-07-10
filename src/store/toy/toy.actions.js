@@ -41,8 +41,5 @@ export function setFilter(filterBy) {
   store.dispatch({ type: SET_FILTER, filterBy })
 }
 
-// function onFilterChange(updatedFilter) {
-//   dispatch({ type: 'SET_FILTER', filterBy: updatedFilter })
-// }
 
 
